@@ -1,10 +1,26 @@
+import { drawGrid } from "./modules/drawgrid.js";
+import { generateRandomSet } from "./modules/randomset.js";
+import { cumulativeNumSet } from "./modules/cumulativeset.js";
+
 const displaySet = document.getElementById("btn-2");
 const generate = document.getElementById("btn-1");
 const percent = document.getElementById("btn-3");
 const txt1 = document.getElementById("txt-1");
 const txt2 = document.getElementById("txt-2");
+let canvas1 = document.getElementById("canvas-1");
+let canvas2 = document.getElementById("canvas-2");
+let c1 = canvas1.getContext("2d");
+let c2 = canvas2.getContext("2d");
+canvas1.width = 1200;
+canvas1.height = 800;
+canvas2.width = 1200;
+canvas2.height = 800;
+
 let randomSet;
 let cumulativeSet;
+
+drawGrid(c1);
+drawGrid(c2);
 
 generate.addEventListener("click", () => {
   const iterations = parseFloat(txt1.value);
@@ -26,44 +42,3 @@ percent.addEventListener("click", () => {
     cumulativeSet[generateRandomSet(cumulativeSet.length, 1, "coin").indexOf(1)]
   );
 });
-
-const generateRandomSet = (arrayLength, iterations, type, typeNumber) => {
-  const numSet = [];
-  numSet.length = arrayLength;
-  numSet.fill(0);
-  switch (type) {
-    case "coin":
-      for (i = 0; i < iterations; i++) {
-        let count = 0;
-        for (j = 0; j < arrayLength; j++) {
-          let a = Math.floor(2 * Math.random());
-          count = count + a;
-        }
-        numSet[count] = numSet[count] + 1;
-      }
-
-      break;
-    case "dice":
-      for (i = 0; i < iterations; i++) {
-        let a = Math.floor(1000 * Math.random());
-        numSet[a] = numSet[a] + 2;
-      }
-      break;
-    default:
-      throw new Error("Must pick an experiment type");
-  }
-
-  return numSet;
-};
-
-const cumulativeNumSet = (numSet) => {
-  const bigSet = [0];
-  for (i = 0; i < numSet.length; i++) {
-    if (i === 0) {
-      bigSet[i] = numSet[i];
-    } else {
-      bigSet[i] = bigSet[i - 1] + numSet[i];
-    }
-  }
-  return bigSet;
-};
