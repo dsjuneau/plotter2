@@ -31,3 +31,14 @@ export const generateRandomSet = (
 
   return numSet;
 };
+
+export const trimRSet = (rSet) => {
+  let newSet = [];
+  for (let i = 0; i < rSet.length; i++) {
+    if (rSet[i] !== 0) {
+      newSet.push(rSet[i]);
+    }
+  }
+
+  return newSet;
+};

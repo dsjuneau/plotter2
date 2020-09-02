@@ -1,7 +1,7 @@
 //Support modules
 import { drawGrid } from "./modules/drawgrid.js";
-import { generateRandomSet } from "./modules/randomset.js";
-import { cumulativeNumSet } from "./modules/cumulativeset.js";
+import { generateRandomSet, trimRSet } from "./modules/randomset.js";
+import { cumulativeNumSet, trimCSet } from "./modules/cumulativeset.js";
 import { plot } from "./modules/plot.js";
 
 //Dom connections
@@ -30,10 +30,19 @@ generate.addEventListener("click", () => {
 });
 
 displaySet.addEventListener("click", () => {
-  document.getElementById("output-1").innerHTML = randomSet;
+  let trimedCSet = [];
+  let trimedRSet = [];
+  trimedRSet = trimRSet(randomSet);
+  document.getElementById(
+    "output-1"
+  ).innerHTML = `Length: ${trimedRSet.length} Set : ${trimedRSet}`;
   plot(randomSet, c1, 1);
   cumulativeSet = cumulativeNumSet(randomSet);
-  document.getElementById("output-2").innerHTML = cumulativeSet;
+  trimedCSet = trimCSet(cumulativeSet);
+  document.getElementById(
+    "output-2"
+  ).innerHTML = `Length: ${trimedCSet.length} Set : ${trimedCSet}`;
+
   plot(cumulativeSet, c2, 1);
 });
 
