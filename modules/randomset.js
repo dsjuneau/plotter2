@@ -42,3 +42,12 @@ export const trimRSet = (rSet) => {
 
   return newSet;
 };
+
+export const generateRandomNumber = (flips) => {
+  let count = 0;
+  for (let i = 0; i < flips; i++) {
+    let a = Math.floor(2 * Math.random());
+    count = count + a;
+  }
+  return count;
+};

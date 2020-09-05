@@ -1,8 +1,12 @@
 //Support modules
 import { drawGrid } from "./modules/drawgrid.js";
-import { generateRandomSet, trimRSet } from "./modules/randomset.js";
+import {
+  generateRandomSet,
+  trimRSet,
+  generateRandomNumber,
+} from "./modules/randomset.js";
 import { cumulativeNumSet, trimCSet } from "./modules/cumulativeset.js";
-import { plot } from "./modules/plot.js";
+import { plot, plot2 } from "./modules/plot.js";
 
 //Dom connections
 const displaySet = document.getElementById("btn-2");
@@ -36,7 +40,7 @@ displaySet.addEventListener("click", () => {
   document.getElementById(
     "output-1"
   ).innerHTML = `Length: ${trimedRSet.length} Set : ${trimedRSet}`;
-  plot(randomSet, c1, 1);
+  plot(trimedRSet, c1);
   cumulativeSet = cumulativeNumSet(randomSet);
   trimedCSet = trimCSet(cumulativeSet);
   document.getElementById(
@@ -48,9 +52,7 @@ displaySet.addEventListener("click", () => {
 
 percent.addEventListener("click", () => {
   console.log(cumulativeSet.length);
-  console.log(
-    cumulativeSet[generateRandomSet(cumulativeSet.length, 1, "coin").indexOf(1)]
-  );
+  console.log(cumulativeSet[generateRandomNumber(randomSet.length)] / 100);
 });
 
 //Draws size Canvas and draw grid

@@ -11,12 +11,7 @@ export const cumulativeNumSet = (numSet) => {
 };
 
 export const trimCSet = (cSet) => {
-  let newSet = [];
-  for (let i = 0; i < cSet.length; i++) {
-    if (!(cSet[i] === 0 || cSet[i] === cSet.length)) {
-      newSet.push(cSet[i]);
-    }
-  }
+  let newSet = cSet.filter((e) => !(e === 0 || e === cSet.length));
   newSet.push(cSet.length);
   return newSet;
 };
