@@ -52,7 +52,7 @@ displaySet.addEventListener("click", () => {
 
 percent.addEventListener("click", () => {
   console.log(cumulativeSet.length);
-  console.log(cumulativeSet[generateRandomNumber(randomSet.length)] / 100);
+  console.log(cumulativeSet[generateRandomNumber(randomSet.length)]);
 });
 
 //Draws size Canvas and draw grid
