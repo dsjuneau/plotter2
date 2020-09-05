@@ -47,7 +47,7 @@ displaySet.addEventListener("click", () => {
     "output-2"
   ).innerHTML = `Length: ${trimedCSet.length} Set : ${trimedCSet}`;
 
-  plot(cumulativeSet, c2, 1);
+  //plot(cumulativeSet, c2, 1);
 });
 
 percent.addEventListener("click", () => {
